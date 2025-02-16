@@ -1,0 +1,139 @@
+<% layout("/layout/boilerplate") %>
+<%- include("../includs/flash.ejs") %>
+<div class="form-div">
+  <form  class="needs-validation body" method="post" action="/users/new-appoinment-booking">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Name :</label>
+        <input type="text" class="form-control" id="inputEmail4" placeholder="eg . Mrunal Thakur" name="name" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Doctor Email :</label>
+        <input type="email" class="form-control" id="inputPassword4"  placeholder="eg . exgample@gmail.com" name="doctorEmail" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Reason For Appointment :</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="eg Bandra East" name="reason" required>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Address :</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="location" required>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Date : </label>
+        <input type="date" class="form-control" id="inputCity" name="date" placeholder="eg . Genune And Authenticate" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputState">Your Phone Number  :</label>
+        <input id="inputState" class="form-control" name="phone_no" required placeholder="eg . 95XXXXXX43">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+         <!-- State Dropdown -->
+      <label for="state">Select State:</label>
+      <select id="state"  onchange="updateCities()" class="form-control" id="inputState" name="state">
+          <option value="">--Select State--</option>
+          <option value="AP">Andhra Pradesh</option>
+          <option value="AR">Arunachal Pradesh</option>
+          <option value="AS">Assam</option>
+          <option value="BR">Bihar</option>
+          <option value="CT">Chhattisgarh</option>
+          <option value="GA">Goa</option>
+          <option value="GJ">Gujarat</option>
+          <option value="HR">Haryana</option>
+          <option value="HP">Himachal Pradesh</option>
+          <option value="JH">Jharkhand</option>
+          <option value="KA">Karnataka</option>
+          <option value="KL">Kerala</option>
+          <option value="MP">Madhya Pradesh</option>
+          <option value="MH">Maharashtra</option>
+          <option value="MN">Manipur</option>
+          <option value="ME">Meghalaya</option>
+          <option value="MZ">Mizoram</option>
+          <option value="NL">Nagaland</option>
+          <option value="OD">Odisha</option>
+          <option value="PB">Punjab</option>
+          <option value="RJ">Rajasthan</option>
+          <option value="SK">Sikkim</option>
+          <option value="TN">Tamil Nadu</option>
+          <option value="TS">Telangana</option>
+          <option value="TR">Tripura</option>
+          <option value="UP">Uttar Pradesh</option>
+          <option value="UT">Uttarakhand</option>
+          <option value="WB">West Bengal</option>
+      </select>
+      </div>
+      <div class="form-group col-md-6">
+        <!-- City Dropdown -->
+        <label for="city">Select City:</label>
+        <select id="city" id="inputCity" class="form-control" name="city" required>
+        <option value="">--Select City--</option>
+        <!-- Cities will be populated based on state selection -->
+    </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+            Agree <a href="">Terms </a> & <a href=""> Conditions</a>
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="user-login-btn new-joinbtn">Book Appointment</button>
+  </form>
+  <script>
+    const cities = {
+      AP: ['Visakhapatnam', 'Vijayawada', 'Guntur', 'Tirupati', 'Kakinada', 'Nellore', 'Rajahmundry', 'Anantapur', 'Chittoor', 'Kadapa'],
+      AR: ['Itanagar', 'Naharlagun', 'Tawang', 'Pasighat', 'Ziro', 'Bomdila', 'Along', 'Tezu'],
+      AS: ['Guwahati', 'Dibrugarh', 'Silchar', 'Jorhat', 'Tinsukia', 'Nagaon', 'Bongaigaon', 'Diphu', 'Tezpur', 'Sivasagar'],
+      BR: ['Patna', 'Gaya', 'Bhagalpur', 'Muzaffarpur', 'Darbhanga', 'Sasaram', 'Arrah', 'Katihar', 'Purnia', 'Begusarai'],
+      CT: ['Raipur', 'Bilaspur', 'Durg', 'Korba', 'Jagdalpur', 'Raigarh', 'Ambikapur', 'Janjgir-Champa', 'Kawardha', 'Bemetara'],
+      GA: ['Panaji', 'Margao', 'Vasco da Gama', 'Mapusa', 'Ponda', 'Cortalim', 'Dabolim', 'Sanguem', 'Quepem'],
+      GJ: ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Junagadh', 'Bhavnagar', 'Gandhinagar', 'Anand', 'Mehsana', 'Porbandar'],
+      HR: ['Gurugram', 'Faridabad', 'Hisar', 'Ambala', 'Karnal', 'Panipat', 'Sonipat', 'Yamunanagar', 'Rohtak', 'Jhajjar'],
+      HP: ['Shimla', 'Dharamshala', 'Kangra', 'Mandi', 'Solan', 'Hamirpur', 'Bilaspur', 'Nahan', 'Palampur', 'Kullu'],
+      JH: ['Ranchi', 'Jamshedpur', 'Dhanbad', 'Bokaro', 'Deoghar', 'Hazaribagh', 'Giridih', 'Dumka', 'Chaibasa', 'Koderma'],
+      KA: ['Bengaluru', 'Mysuru', 'Hubballi', 'Mangalore', 'Belagavi', 'Gulbarga', 'Shimoga', 'Tumakuru', 'Udupi', 'Chikkamagaluru'],
+      KL: ['Thiruvananthapuram', 'Kochi', 'Kozhikode', 'Alappuzha', 'Kannur', 'Kottayam', 'Thrissur', 'Palakkad', 'Ernakulam', 'Wayanad'],
+      MP: ['Bhopal', 'Indore', 'Gwalior', 'Jabalpur', 'Ujjain', 'Sagar', 'Ratlam', 'Dewas', 'Katni', 'Shivpuri'],
+      MH: ['Mumbai', 'Pune', 'Nagpur', 'Nashik', 'Aurangabad', 'Solapur', 'Amravati', 'Thane', 'Kolhapur', 'Ratnagiri'],
+      MN: ['Imphal', 'Thoubal', 'Ukhrul', 'Bishnupur', 'Churachandpur', 'Senapati', 'Tamenglong', 'Jiribam', 'Kakching'],
+      ME: ['Shillong', 'Tura', 'Jowai', 'Nongpoh', 'Bamban', 'Mawkyrwat', 'Ranikor', 'Khliehriat', 'Mairang'],
+      MZ: ['Aizawl', 'Lunglei', 'Saiha', 'Champhai', 'Kolasib', 'Lawngtlai', 'Serchhip', 'Hnahthial', 'Khawzawl'],
+      NL: ['Kohima', 'Dimapur', 'Wokha', 'Mokokchung', 'Tuensang', 'Mon', 'Phek', 'Zunheboto'],
+      OD: ['Bhubaneswar', 'Cuttack', 'Rourkela', 'Berhampur', 'Sambalpur', 'Balasore', 'Kendrapara', 'Dhenkanal', 'Koraput', 'Angul'],
+      PB: ['Chandigarh', 'Amritsar', 'Ludhiana', 'Jalandhar', 'Patiala', 'Mohali', 'Bathinda', 'Hoshiarpur', 'Firozpur', 'Mansa'],
+      RJ: ['Jaipur', 'Jodhpur', 'Udaipur', 'Kota', 'Ajmer', 'Bikaner', 'Pali', 'Sikar', 'Alwar', 'Jhunjhunu'],
+      SK: ['Gangtok', 'Namchi', 'Pelling', 'Mangan', 'Rangpo', 'Gyalshing', 'Singtam'],
+      TN: ['Chennai', 'Coimbatore', 'Madurai', 'Trichy', 'Salem', 'Tirunelveli', 'Erode', 'Vellore', 'Tiruchirapalli', 'Karur'],
+      TS: ['Hyderabad', 'Warangal', 'Nizamabad', 'Khammam', 'Rangareddy', 'Karimnagar', 'Mahabubnagar', 'Adilabad', 'Nalgonda'],
+      TR: ['Agartala', 'Udaipur', 'Sabroom', 'Belonia', 'Kailasahar', 'Teliamura', 'Khowai', 'Kamalanagar'],
+      UP: ['Lucknow', 'Kanpur', 'Agra', 'Varanasi', 'Meerut', 'Aligarh', 'Bareilly', 'Ghaziabad', 'Noida', 'Jhansi'],
+      UT: ['Dehradun', 'Haridwar', 'Nainital', 'Rishikesh', 'Roorkee', 'Udham Singh Nagar', 'Pauri', 'Tehri'],
+      WB: ['Kolkata', 'Siliguri', 'Durgapur', 'Asansol', 'Howrah', 'Kharagpur', 'Jalpaiguri', 'Malda', 'Burdwan', 'Hooghly']
+    };
+
+    function updateCities() {
+        const stateSelect = document.getElementById('state');
+        const citySelect = document.getElementById('city');
+        const selectedState = stateSelect.value;
+
+        // Clear existing options
+        citySelect.innerHTML = '<option value="">--Select City--</option>';
+
+        if (selectedState) {
+            // Populate cities based on selected state
+            cities[selectedState].forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            });
+        }
+    }
+</script>
+</div>

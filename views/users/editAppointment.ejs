@@ -1,0 +1,53 @@
+<% layout("/layout/boilerplate") %>
+<%- include("../includs/flash.ejs") %>
+<div class="form-div">
+  <form  class="needs-validation body" method="post" action="/users/confirmEdit/<%=appointment._id  %>">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Name :</label>
+        <input type="text" class="form-control" id="inputEmail4" placeholder="Name" name="name" value="<%= appointment.name %>" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Doctor Email :</label>
+        <input type="email" class="form-control" id="inputPassword4" placeholder="Email" name="doctorEmail" value="<%= appointment.doctorEmail %>" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Reason For Appointment :</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="eg Bandra East" value="<%= appointment.reason %>" name="reason" required>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Address :</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" value="<%= appointment.location %>" name="location" required>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Describe Your Previous Experince :</label>
+        <input type="date" class="form-control" id="inputCity" name="experience" value="<%= appointment.date %>" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputState">Your Phone Number  :</label>
+        <input id="inputState" class="form-control" name="phone_no" value="<%= appointment.phone_no %>"  required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity"> State :</label>
+        <input type="text" class="form-control" id="inputCity" value="<%= appointment.state %>" name="state" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputState">City:</label>
+        <input id="inputState" class="form-control"  value="<%= appointment.city %>" name="city" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+            Agree <a href="">Terms </a> & <a href=""> Conditions</a>
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="user-login-btn new-joinbtn">Book Appointment</button>
+  </form>
+</div>

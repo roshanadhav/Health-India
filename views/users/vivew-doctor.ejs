@@ -1,0 +1,151 @@
+<% layout("/layout/boilerplate") %>
+
+<body class="body">
+<%- include("../includs/flash.ejs") %>
+<b class="BookBtn ">Book Appointment</b>
+    <header class="profile-header">
+        <div class="profile-cover">
+            <img src="<%= getDoctor.image %>" alt="Doctor Image" class="profile-picture">
+        </div>
+        <div class="profile-info">
+            <div class="info">
+                <b class="profile-name"><%= getDoctor.name %></b>
+            <p class="profile-bio">
+                <% if (getDoctor.bio) { %>
+                    <%= getDoctor.bio %>
+                <% } %>
+            </p>
+            <p class="profile-location">
+                <% if (getDoctor.location.name) { %>
+                    <a href="<%= getDoctor.location.GoogleMapUrl %>"><%= getDoctor.location.name %></a>
+                <% } %>
+            </p>
+            
+            
+
+            <p class="profile-email"><%= getDoctor.email %></p>
+            <% if(user && user.following) {%>
+                <%if( user.following.includes(getDoctor._id))  {%>
+                    <button   id="follobtn">Following</button>
+                <% } else { %>
+                    <button   id="follobtn">Follow</button>
+                <% } %>
+            <% } else { %>
+                <button   id="follobtn">Follow</button>
+            <% } %>
+            <p style="display: none;" id="doctorid"><%= getDoctor._id %></p>
+            <button class="msgbtn " >Message</button>
+            <br>
+            <br>
+            <b><span style="cursor: pointer;" id="followers">Followers</span> &nbsp; &nbsp;&nbsp;<span style="cursor: pointer;" id="following">Following</span></b>  
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= getDoctor.followers.length %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= getDoctor.following.length %>
+        </div>
+            </div>
+            <br><br>
+<br>
+            <!-- <div class="parent-of-post">
+                <div id="post">
+                    <span class="profile-on-top-of-post">
+                        <img src="<%= getDoctor.image  %>" alt="img">
+                        <b><a href="/users/home-doctor/${element.id}" style="color: black;" >&nbsp;&nbsp; &nbsp;<%= getDoctor.name %></a></b>
+                    </span>
+                    <div class="postimg-div">
+                        <% if(getDoctor.image != "https://i0.wp.com/www.kmcpvtltd.com/wp-content/uploads/2018/12/doctor.png?fit=300%2C300&ssl=1") {%>
+                            <img src="<%= getDoctor.image %>" alt="Doctor Image" >
+                            <i class="fa-solid fa-heart" id="likebtn"></i>
+                        <% } %>
+                        <span>
+                            <i class="fa-regular fa-heart"></i>
+                            Likes</span>
+                    <span><i class="fa-regular fa-comment"></i>
+                        comments</span>
+                    <span>
+                        <i class="fa-solid fa-share"></i>
+                        sheres</span>
+                    </div>
+                </div>
+            </div> -->
+    </header>
+    <% if(user) {%>
+        <p id="user" style="display: none;"><%= user._id %></p>
+    <% } %>
+    <hr class="divider">
+    <form action="/users/<%= getDoctor._id %>/revivew" method="post" class=" rating-form">
+        <fieldset class="starability-slot">
+            <legend>Rate us </legend>
+            <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="rating" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="rating" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="rating" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="rating" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="rating" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+        <br>
+        <div class="rev-comment form-row">
+            <label for="comment">Comment :</label><br>
+            <textarea name="comment" id="comment" placeholder="Add A revivew" class="form-control" ></textarea>
+        </div>
+        <button class="btn rev-form-btn" type="submit">Add</button>
+    </form>
+    <hr class="divider">
+    <h5 class="rev">Revivews and Ratings </h5>
+    <% if(getDoctor.reviews && getDoctor.reviews) {%>
+        <div class="">
+            <% for(revivew of getDoctor.reviews) {%>
+                <div class="" style="padding: 20px;">
+                    <div class="info-rev-ret-comment">
+                        <b>@<%= revivew.postedBy.username %></b>
+                        <p class="starability-result" data-rating="<%= revivew.rating %>">
+                            Rated: 3 stars
+                          <% if(revivew.comment) {%></p>
+                            <p><%= revivew.comment %>   </p>
+                            <% } %>
+                        <div><% if(user && user.username == revivew.postedBy.username ){ %>
+                            <a href="/users/<%=getDoctor._id%>/review/<%= revivew._id %>" class="edit-revivew">Edit</a>
+                            <form action="/users/<%=getDoctor._id%>/review/<%= revivew._id%>?_method=DELETE" method="post" style="display: inline-block;"><button type="submit" class="delete-revivew " > <i class="fa-solid fa-trash"></i> </button></form>
+                            <% }else{ %> <a href="" class="report">Report</a> <% } %></div>
+                    </div>    
+                        
+                </div>
+            <% } %>
+        </div>
+    <% } %>
+    <hr class="divider">
+    <% if(doctors){ %>
+    <div class="doctors-home">
+        <% for (let i = 0; i < Math.min(doctors.length, 11); i++) { %>
+            <% let doctor = doctors[i]; %>
+            <div class="card" style="width: 14rem; height:18rem">
+                <img class="card-img-top" src="<%= doctor.image %>" alt="Doctor Image">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <% if (doctor.name) { %>
+                            <%= doctor.name %>
+                        <% } %>
+                    </h5>
+                    <p class="card-text">
+                        <% if (doctor.location && doctor.location) { %>
+                            <a href="<%= doctor.location %>">Location</a>
+                        <% } %>
+                    </p>
+                    <a href="/users/home-doctor/<%= doctor._id %>" class="btn btn-primary">View -></a>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <% } %>
+    <hr class="divider">
+    
+    <script src="/js/script1.js"></script>
+    <script src="/js/script2.js"></script>
+</body>
+
+
+
+<!-- <a href="/users/<%=//getDoctor._id%>/review/<%=// revivew._id %>" class="btn rev-form-btn new-btn-delete ">Delete</a> -->

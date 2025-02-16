@@ -1,0 +1,60 @@
+<% layout("/layout/boilerplate") %>
+<%- include("../includs/flash.ejs") %>
+
+
+<body>
+
+    <%- include("../includs/flash.ejs") %>
+    <header class="profile-header">
+        <div class="profile-cover">
+            <img src="<%= "https://i0.wp.com/www.kmcpvtltd.com/wp-content/uploads/2018/12/doctor.png?fit=300%2C300&ssl=1" %>" alt="Doctor image" class="profile-picture">
+            <form action="/doctors/profile-photo/<%= %>" method="POST" enctype="multipart/form-data" style="display: inline-block;">
+                <div class="profile-cover">
+                    <img src="<%=  "https://i0.wp.com/www.kmcpvtltd.com/wp-content/uploads/2018/12/doctor.png?fit=300%2C300&ssl=1" %>" alt="Doctor image" class="profile-picture">
+                    <label for="profile-image-upload" class="upload-button">
+                        <span class="plus-icon">+</span>
+                    </label>
+                    <input type="file" id="profile-image-upload" name="image" accept="image/*" class="profile-image-input">
+                </div>
+                <button type="submit" style="display: none;">Submit</button> <!-- Hidden submit button for the form --><script>
+                    document.getElementById('profile-image-upload').addEventListener('change', function() {
+                        // Get the form element
+                        var form = this.form;
+                        // Submit the form
+                        form.submit();
+                    });
+                    </script>
+            </form>
+        </div>
+        <div class="profile-info pre-1-pro-1f">
+            <div class="info">
+                <b class="profile-name"><%= user.ifmedicalOwner.businessName %></b>
+            <p class="profile-bio">
+                <%= user.ifmedicalOwner.businessType %>
+            </p>
+            <p class="profile-location">
+                <a href="<%= user.ifmedicalOwner.coordinatess %>">Location</a>
+            </p>
+
+            <p class="profile-email"><%= user.ifmedicalOwner.emailAddress %></p>
+            <br>
+                <button   id="follobtn">Follow</button>
+                <button class="msgbtn " >Message</button>
+            <br>
+            <br>
+            <!-- <b><span style="cursor: pointer;" id="followers">Followers</span> &nbsp; &nbsp;&nbsp;<span style="cursor: pointer;" id="following">Following</span></b>  
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+            </div>
+            </div>
+
+
+            <div class="allproducts" >
+                <div class="indualProducts">
+                    img 
+                    Name
+                    price 
+                    deta
+                </div>
+            </div>
+</body>

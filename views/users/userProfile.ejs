@@ -1,0 +1,81 @@
+<% layout("/layout/boilerplate") %>
+
+<div class="user-profile-main-box ">
+    <% layout("/layout/boilerplate") %>
+
+
+<body class="body">
+  <%- include("../includs/flash.ejs") %>
+
+    <header class="profile-header">
+        <div class="profile-cover">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" alt="Doctor image" class="profile-picture">
+        </div>
+        <div class="profile-info">
+            <div class="info">
+                <b class="profile-name"><%=reqUser.username %></b>
+            <p class="profile-bio">
+                User Info
+            </p>
+            <p class="profile-location">
+                User Location
+            </p>
+
+            <p class="profile-email"><%=reqUser.email%></p>
+        </div>
+            </div>
+    </header>
+    <% if(user && reqUser.ifdoctor){ %>
+    <a href="/doctors/profile" class="msgbtn jb1 jb2 " style="text-decoration: none;">
+    View Dotor Profile
+    </a>
+    <% } else{ %> <a href="/doctors/join"class="msgbtn jb1 jb2 " style="text-decoration: none;" >Join Us As Doctor</a><% } %> <b></b>
+    
+    <a href="/provide-your-service"class="jb1 msgbtn">Provide your survices</a>
+</div>
+
+
+<% if(reqUser && reqUser.appointment.length){ %>  
+    <div class="apppoinments">
+        <ul>
+            <% for (appointment of reqUser.appointment) { %>
+                <li>
+                    <% if (appointment.name) { %>
+                        <strong>Name:</strong> <%= appointment.name %> 
+                    <% } %><br>
+                    <% if (appointment.phone_no) { %>
+                        <strong>Phone Number:</strong> <%= appointment.phone_no %><br>
+                    <% } %>
+                    <% if (appointment.reason) { %>
+                        <strong>Reason:</strong> <%= appointment.reason %><br>
+                    <% } %>
+                    <% if (appointment.state) { %>
+                        <strong>State:</strong> <%= appointment.state %><br>
+                    <% } %>
+                    <% if (appointment.city) { %>
+                        <strong>City:</strong> <%= appointment.city %><br>
+                    <% } %>
+                    <% if (appointment.date) { %>
+                        <strong>Date:</strong> <%= appointment.date %>
+                    <% }%> 
+                    <br>
+                    <% if (appointment.status) { %>
+                        <strong>Status :</strong> <%= appointment.status %>
+                    <% }%> 
+                    <div class="btn-div">
+                        <button class="approve-button">Edit</button>
+                        <button class="ignore-button">Cancel</button>
+                    </div>
+                    <hr class="divider">
+                </li>
+            <% } %> 
+        </ul>
+        <br><br><br>
+        <p><b>Disclaimer:</b> The information provided in this ticket is generated automatically and may not be accurate. Please verify all details independently. Any misuse of this information could result in legal action.</p>
+        <b>Thank you for using our services; we are happy to help and look forward to your next visit!</b>
+    </div>
+    <% }else{ %> <div class="disclemer">
+        <p><b>Disclaimer:</b> The information provided in this profile is generated automatically and may not be accurate. Please verify all details independently. Any misuse of this information could result in legal action.</p>
+        <b>Thank you for using our services; we are happy to help and look forward to your next visit!</b>
+    </div>
+    <% } %>

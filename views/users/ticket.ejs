@@ -1,0 +1,41 @@
+<% layout("/layout/boilerplate") %>
+<%- include("../includs/flash.ejs") %>
+
+<% if(appointment){ %>  
+<div class="apppoinments">
+    <ul>
+            <li>
+                <% if (appointment.name) { %>
+                    <strong>Name:</strong> <%= appointment.name %> 
+                    <button>Approve</button>
+                <% } %><br>
+                <% if (appointment.phone_no) { %>
+                    <strong>Phone Number:</strong> <%= appointment.phone_no %><br>
+                <% } %>
+                <% if (appointment.reason) { %>
+                    <strong>Reason:</strong> <%= appointment.reason %><br>
+                <% } %>
+                <% if (appointment.state) { %>
+                    <strong>State:</strong> <%= appointment.state %><br>
+                <% } %>
+                <% if (appointment.city) { %>
+                    <strong>City:</strong> <%= appointment.city %><br>
+                <% } %>
+                <% if (appointment.date) { %>
+                    <strong>Date:</strong> <%= appointment.date %>
+                <% } %>
+                <div>
+                    <button class="approve-button">Edit</button>
+                    <button class="ignore-button">Cancel</button>
+                </div>
+                <hr class="divider">
+                <h4 style="margin-top: 3rem;">Take A screenShot ! please </h4>
+                <br><br><br>
+                <p><b>Disclaimer:</b> The information provided in this ticket is generated automatically and may not be accurate. Please verify all details independently. Any misuse of this information could result in legal action.</p>
+                <b>
+                    Thank you for using our services; we are happy to help and look forward to your next visit!</b>
+
+            </li>
+    </ul>
+</div>
+<% } %>

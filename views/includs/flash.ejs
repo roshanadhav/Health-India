@@ -1,0 +1,24 @@
+
+    
+    <% if(error && error.length){ %>
+        <div class="flash-message denger">
+            <p><%= error %></p>
+        </div>
+        <% } %>
+        <% if(sucess && sucess.length){ %>
+            <div class="flash-message " style="background-color: rgb(127, 255, 144);">
+                <p><%= sucess %></p>
+            </div>
+            <% } %>
+        
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const flashMessage = document.querySelector('.flash-message');
+        flashMessage.classList.add('show');
+        setTimeout(function() {
+            flashMessage.style.display = 'none';
+        }, 3000); 
+    });
+    
+    </script>

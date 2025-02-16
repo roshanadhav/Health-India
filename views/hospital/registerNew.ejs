@@ -1,0 +1,94 @@
+<% layout("/layout/boilerplate") %>
+<%- include("../includs/flash.ejs") %>
+<link rel="stylesheet" href="/css/medicalFormStyle.css">
+<body>
+    <%- include("../includs/flash.ejs") %>
+    
+
+    <div class="cont-ner">
+        <div class="progress-bar">
+            <div class="step completed">Hospital Info</div>
+            <div class="step ">Contact Info</div>
+            <div class="step">Location & Services</div>
+            <div class="step">Compliance & Payment</div>
+    </div>
+
+        <form id="registration-form"  action="/medical/do-register">
+            <!-- Step 1: Business Information -->
+            <div class="form-step active">
+                <h2>Hospital Registration</h2>
+                <label for="businessName">Hospital Name:</label>
+                <input type="text" id="businessName" name="name" required>
+
+                <label for="businessType">Type</label>
+                <select id="businessType" name="Profession" required>
+                    <option value="">Select</option>
+                    <option value="Government">Government</option>
+                    <option value="Private">Private</option>
+                    
+                </select>
+
+                <label for="adharnumber"> Registration Number : </label>
+                <input type="text" id="adharnumber" name="adharNumber" required>
+
+                <label for="taxId"> Owner Name :</label>
+                <input type="text" id="taxId" required>
+
+                <button type="button" class="next-btn formRegisterbtn">Next</button>
+            </div>
+
+            <!-- Step 2: Contact Information -->
+            <div class="form-step">
+                <h2>License Information</h2>
+                <label for="contactPerson">Contact Person:</label>
+                <input type="text" id="contactPerson" required>
+
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" required>
+
+                <label for="emailAddress">Email Address:</label>
+                <input type="email" id="emailAddress" required>
+
+                <label for="physicalAddress">Physical Address:</label>
+                <input type="text" id="physicalAddress" required>
+
+                <button type="button" class="prev-btn formRegisterbtn">Previous</button>
+                <button type="button" class="next-btn formRegisterbtn">Next</button>
+            </div>
+
+            <!-- Step 3: Location and Services -->
+            <div class="form-step">
+                <h2>Location and Services</h2>
+                <label for="coordinates">Coordinates (Longitude, Latitude):</label>
+                <input type="text" id="coordinates" placeholder="e.g., -74.0060, 40.7128" required>
+
+                <label for="operatingHours">Operating Hours:</label>
+                <input type="text" id="operatingHours" placeholder="e.g., Mon-Fri 9am-5pm" required>
+
+                <label for="servicesOffered">Services Offered:</label>
+                <textarea id="servicesOffered" required></textarea>
+
+                <button type="button" class="prev-btn  formRegisterbtn">Previous</button>
+                <button type="button" class="next-btn formRegisterbtn">Next</button>
+            </div>
+
+            <!-- Step 4: Compliance and Payment -->
+            <div class="form-step">
+                <h2>Compliance and Payment</h2>
+                <label for="pharmacyLicense">Pharmacy License:</label>
+                <input type="text" id="pharmacyLicense" required>
+
+                <label for="paymentMethods">Payment Methods (comma-separated):</label>
+                <input type="text" id="paymentMethods" required>
+
+                <label for="complianceDocumentation">Compliance Documentation URL:</label>
+                <input type="url" id="complianceDocumentation" required>
+
+                <button type="button" class="prev-btn formRegisterbtn">Previous</button>
+                <button type="submit" class="submit-btn formRegisterbtn">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/js/medicalForm.js"></script> 
+</body>

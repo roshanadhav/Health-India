@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .rating {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+    
+    .rating input[type="radio"] {
+      display: none;
+    }
+    
+    .rating label {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://image.similarpng.com/very-thumbnail/2021/08/Golden-star-on-transparent-background-PNG.png'); /* Replace 'star.png' with your star image */
+      background-size: cover;
+    }
+    
+    .rating input[type="radio"]:checked ~ label {
+      background-image: url('https://pngfre.com/wp-content/uploads/star-png-image-pngfre-2.png'); /* Replace 'star-filled.png' with your filled star image */
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="rating">
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1"></label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2"></label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3"></label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4"></label>
+    <input type="radio" id="star5" name="rating" value="15">
+    <label for="star5"></label>
+  </div>
+  
+  <div>
+    <label for="comment">Comment:</label><br>
+    <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
+  </div>
+  
+  <button onclick="submitRating()">Submit</button>
+  
+  <script>
+    function submitRating() {
+      var rating = document.querySelector('input[name="rating"]:checked');
+      var comment = document.getElementById('comment').value;
+    
+      if (rating && comment.trim() !== '') {
+        // Example: Send data to server or process locally
+        console.log("Rating: " + rating.value);
+        console.log("Comment: " + comment);
+        // Clear form after submission if needed
+        document.getElementById('comment').value = '';
+        document.querySelector('input[name="rating"]:checked').checked = false;
+        alert("Thank you for your rating and comment!");
+      } else {
+        alert("Please select a rating and enter a comment.");
+      }
+    }
+    
+  </script>
+</body>
+</html>

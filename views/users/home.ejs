@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/style1.css">
+    <title>Health India</title>
+</head>
+<body>
+    <%- include("../includs/navbar.ejs") %>
+    <%- include("../includs/flash.ejs") %>
+
+    <div class="book-container none body" style="margin-top: none;">
+        <div class="container" id="container" style="background-color: rgb(225, 248, 228);">
+            <div class="form-container sign-up">
+                <!-- Placeholder for sign-up form or content -->
+            </div>
+            <div class="form-container sign-in">
+                <img src="/doctor-removebg-preview-5.png" alt="Doctor" class="doctor-image" style="position: relative; left: -5rem;">
+                <a href="/users/appointment-from-home" class="btn">Book Your Appointment</a>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Health India</h1>
+                        <p>Your Convenient Platform for Booking Doctor Appointments</p>
+                        <button class="hidden" id="login">Welcome</button>
+                    </div>
+                    <div class="toggle-panel toggle-right">
+                        <h1>Health India</h1>
+                        <p>Your Convenient Platform for Booking Doctor Appointments</p>
+                        <button class="hidden" id="register">Welcome</button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="new-small-home">
+        <div class="new-home-card">
+            <img src="/doctor-removebg-preview-5.png" alt="doctor image">
+            <a href="appointment-from-home" class="btn bookap-btn" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Book Your Appointment</a>
+        </div>
+        <div class="aboutus">
+            <b>Welcoming You To Our Website</b>
+            <b><span style="color: rgb(6, 161, 161);">Start Booking</span> Journey With Us</b>
+        </div>
+    </div>
+    <% if(doctors){ %>
+    <div class="doctors-home">
+        <% for (let i = 0; i < Math.min(doctors.length, 11); i++) { %>
+            <% let doctor = doctors[i]; %>
+            <div class="card" style="width: 14rem; height:18rem">
+                <img class="card-img-top" src="<%= doctor.image %>" alt="Doctor Image">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <% if (doctor.name) { %>
+                            <%= doctor.name %>
+                        <% } %>
+                    </h5>
+                    <p class="card-text">
+                        <% if (doctor.location && doctor.location) { %>
+                            <a href="<%= doctor.location %>">Location</a>
+                        <% } %>
+                    </p>
+                    <a href="/users/home-doctor/<%= doctor._id %>" class="btn btn-primary">View -></a>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <% } %>
+    <!-- <div class="info-health-india">
+        <img src="/HealthIndiainfo.jpeg.png" alt="Photho">
+        <div style="display: inline-block; width:35%;">
+        <b>Make Your Health Journy More Easier With Us</b>
+
+        </div>
+    </div> -->
+    <%- include("../includs/footer.ejs") %>
+
+    
+
+    <script src="/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
