@@ -115,7 +115,7 @@ graph TB
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/roshanadhav/Health-Indianow.git
+git clone https://github.com/roshanadhav/Health-India
 cd Health-Indianow
 npm install
 npm run dev
