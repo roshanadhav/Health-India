@@ -1,7 +1,7 @@
 const mongoose = require ("mongoose");
 
 async function main() {
-    mongoose.connect('mongodb://127.0.0.1:27017/healthindia')
+    mongoose.connect('mongodb+srv://roshanadhav02_db_user:J3WRFpJL5pclOf80@cluster0.pksusny.mongodb.net/?appName=Cluster0')
 }
 
 main()

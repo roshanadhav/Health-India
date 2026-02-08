@@ -44,7 +44,7 @@ const medical = require("./routes/medicals.js")
 const delevery = require("./routes/delevary.js")
 //connecting to data base
 async function main(){
-    await mongoose.connect('mongodb://127.0.0.1:27017/healthindia')
+    await mongoose.connect('mongodb+srv://roshanadhav02_db_user:J3WRFpJL5pclOf80@cluster0.pksusny.mongodb.net/?appName=Cluster0')
 }
 main()
 .then(res=>console.log("connected to db"))
