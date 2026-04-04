@@ -15,7 +15,7 @@ Health India simulates a real-world healthcare platform where users can interact
 Frontend:
 - HTML
 - CSS
-- JavaScript 
+- JavaScript
 
 Backend:
 - Node.js
@@ -30,36 +30,36 @@ Tools:
 - Postman (optional)
 
 ## Folder Structure
-
+```
 health-india/
-│
+|
 ├── frontend/
-│   ├── public/
-│   │   ├── index.html
-│   │   └── assets/
-│   │
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── styles/
-│   │   ├── utils/
-│   │   └── App.js
-│   │
-│   ├── package.json
-│
+|   ├── public/
+|   |   ├── index.html
+|   |   └── assets/
+|   |
+|   ├── src/
+|   |   ├── components/
+|   |   ├── pages/
+|   |   ├── styles/
+|   |   ├── utils/
+|   |   └── App.js
+|   |
+|   └── package.json
+|
 ├── backend/
-│   ├── config/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   ├── server.js
-│   ├── package.json
-│
+|   ├── config/
+|   ├── controllers/
+|   ├── models/
+|   ├── routes/
+|   ├── middleware/
+|   ├── server.js
+|   └── package.json
+|
 ├── .env
 ├── .gitignore
-├── README.md
-
+└── README.md
+```
 ## Frontend Explanation
 
 frontend/public:
@@ -142,8 +142,8 @@ DELETE /api/users/:id
 
 ## Deployment
 
-Frontend: Vercel 
-Backend: Render 
+Frontend: Vercel  
+Backend: Render  
 Database: MongoDB Atlas  
 
 ## Contributing
